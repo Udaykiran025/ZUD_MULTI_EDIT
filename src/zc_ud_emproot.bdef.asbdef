@@ -1,0 +1,22 @@
+projection;
+strict ( 2 );
+use draft;
+define behavior for ZC_UD_EMPROOT //alias <alias_name>
+{
+
+
+use action Edit;
+use action Activate;
+use action Discard;
+use action Prepare;
+use action Resume;
+  use association _employee { create; with draft; }
+}
+
+define behavior for ZC_UD_EMPLOYEE //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _remployee{with draft;}
+}

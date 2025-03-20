@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service definition for Employee wth multiinline'
+define service ZSD_UD_EMPLOYEE {
+  expose ZC_UD_EMPROOT;
+  expose ZC_UD_EMPLOYEE;
+}

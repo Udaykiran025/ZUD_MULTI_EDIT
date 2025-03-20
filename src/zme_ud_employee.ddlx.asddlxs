@@ -1,0 +1,38 @@
+@Metadata.layer: #CORE
+
+@UI: { headerInfo: {
+typeName: 'Employee',
+typeNamePlural: 'Employees',
+title: { type: #STANDARD, label: 'Employee', value: 'EmployeeId'} }
+}
+annotate view ZC_UD_EMPLOYEE with
+{
+  @UI.facet: [{ id: 'Vbak',
+                     purpose: #STANDARD,
+                     type: #IDENTIFICATION_REFERENCE,
+                     label: 'Sales Header Details'}]
+
+  @UI.identification: [{ position: 10, label: 'Employee Id' }]
+  @UI.lineItem: [{ position: 10 , label: 'Employee Id'}]
+  @EndUserText.label: 'Employee ID'
+  EmployeeId;
+  @UI.identification: [{ position: 20, label: 'First Name' }]
+  @UI.lineItem: [{ position: 20 , label: 'First Name'}]
+  FirstName;
+  @UI.identification: [{ position: 30, label: 'Last Name' }]
+  @UI.lineItem: [{ position: 30 , label: 'Last Name'}]
+  LastName;
+  @UI.identification: [{ position: 40, label: 'Department' }]
+  @UI.lineItem: [{ position: 40 , label: 'Department'}]
+  Department;
+  @UI.identification: [{ position: 50, label: 'Joining Date' }]
+  @UI.lineItem: [{ position: 50 , label: 'Joining Date'}]
+  JoiningDate;
+  @UI.identification: [{ position: 60, label: 'Is Active' }]
+  @UI.lineItem: [{ position: 60 , label: 'Is Active'}]
+  IsActive;
+  //  ChangedBy;
+  //  LocalLastChangedAt;
+  //  ChangedAt;
+
+}

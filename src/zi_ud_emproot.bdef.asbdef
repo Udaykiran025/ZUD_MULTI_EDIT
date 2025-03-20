@@ -1,0 +1,56 @@
+managed implementation in class zbp_i_ud_emproot unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_UD_EMPROOT //alias <alias_name>
+with unmanaged save
+draft table ZUD_D_EMPROOT
+//persistent table t002
+lock master
+total etag maxChangedat
+authorization master ( instance )
+
+//etag master <field_name>
+##draft_op_not_required      //to hide the warnings, create uptade, delete
+{
+  //  create;
+  //  update;
+  //  delete;
+  field ( readonly ) EmpRoot;
+  association _employee { create; }
+
+  draft action Edit;
+draft action Activate optimized;
+draft action Discard;
+draft action Resume;
+draft determine action Prepare;
+}
+
+define behavior for ZI_UD_EMPLOYEE //alias <alias_name>
+persistent table zud_employee
+draft table ZUD_D_EMPLOYEE
+lock dependent by _remployee
+authorization dependent by _remployee
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+  field ( mandatory : create, readonly : update ) EmployeeId;
+  field ( readonly ) EmpRoot, ChangedAt, ChangedBy;
+field ( mandatory ) FirstName;
+  association _remployee;
+
+
+  mapping for zud_employee
+    {
+      EmployeeId         = employee_id;
+      FirstName          = first_name;
+      LastName           = last_name;
+      Department         = department;
+      JoiningDate        = joining_date;
+      IsActive           = is_active;
+      ChangedBy          = changed_by;
+      ChangedAt          = changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}
